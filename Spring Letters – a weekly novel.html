@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Spring Letters: a weekly novel</title>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Gowun+Dodum&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fbf6f0;--surface:#fff;--ink:#2b1b2e;--muted:#6e5a70;--line:#ead9d9;--petal:#f3a6b8;--accent:#c2456b;--plum:#2b1b2e;--plum-2:#5a2a49;
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1a111c;--surface:#251a28;--ink:#f7e9ec;--muted:#c7aeb8;--line:#3a2a3d;--accent:#f08aa6;--plum:#120a14;--plum-2:#3d1c33;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#1a111c;--surface:#251a28;--ink:#f7e9ec;--muted:#c7aeb8;--line:#3a2a3d;--accent:#f08aa6;--plum:#120a14;--plum-2:#3d1c33;color-scheme:dark}
+:root[data-theme="light"]{color-scheme:light}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.7 "Gowun Dodum","Apple SD Gothic Neo",system-ui,sans-serif}
+h1,h2,h3{font-family:"Gowun Batang",Batang,Georgia,serif;margin:0;line-height:1.25}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 5vw;background:var(--plum);color:#fff4f6;position:sticky;top:0;z-index:5}
+.bar a.brand{font-family:"Gowun Batang",serif;font-size:1.1rem;color:#fff4f6;text-decoration:none;font-weight:700}
+.tools{display:flex;gap:8px}
+.tools button{background:transparent;color:#fff4f6;border:1px solid rgba(255,255,255,.4);border-radius:999px;padding:5px 13px;font:inherit;cursor:pointer}
+#prog{position:fixed;left:0;top:0;height:3px;width:0;background:var(--petal);z-index:9}
+.banner{position:relative;overflow:hidden;color:#fff4f6;background:radial-gradient(ellipse at 80% 0,var(--plum-2),transparent 65%),linear-gradient(180deg,var(--plum),var(--plum-2));padding:clamp(90px,16vh,150px) 5vw clamp(80px,12vh,120px);min-height:80vh;display:grid;align-content:center}
+.banner>.txt{position:relative;z-index:2;max-width:640px}
+.moon{position:absolute;z-index:1;right:7vw;top:12%;width:min(30vw,260px);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 35% 35%,#fff6ea,#f5d9c4 70%);opacity:.9;box-shadow:0 0 90px 20px rgba(255,214,200,.22)}
+.branch{position:absolute;z-index:1;top:0;right:0;width:min(72vw,600px);pointer-events:none}
+.badge{display:inline-block;border:1px solid rgba(243,166,184,.6);color:#f9c9d4;border-radius:999px;padding:3px 16px;font-size:.92rem;margin-bottom:18px}
+.banner h1{font-size:clamp(3.2rem,12vw,7rem);letter-spacing:.01em}
+.tagline{font-family:"Gowun Batang",serif;font-size:clamp(1.15rem,3vw,1.6rem);color:#f9c9d4;margin:8px 0 26px;max-width:30ch}
+#petals{position:absolute;inset:0;pointer-events:none}
+.petal{position:absolute;top:-30px;background:var(--petal);border-radius:80% 0 80% 0;animation:fall linear infinite}
+@keyframes fall{0%{transform:translate3d(0,-5vh,0) rotate(0)}50%{transform:translate3d(50px,40%,0) rotate(200deg)}100%{transform:translate3d(-25px,420px,0) rotate(420deg)}}
+@media (prefers-reduced-motion:reduce){.petal{animation:none;top:calc(var(--y)*1%)}}
+.btn{display:inline-block;padding:11px 24px;border-radius:999px;border:2px solid var(--petal);background:var(--petal);color:#2b1b2e;font:700 1rem "Gowun Dodum",sans-serif;cursor:pointer;text-decoration:none}
+.btn.wl{background:transparent;color:#fff4f6;border-color:rgba(255,255,255,.5);margin-left:10px}
+.btn.ghost{background:transparent;color:var(--accent);border-color:var(--accent)}
+.btn[aria-disabled="true"]{opacity:.4;pointer-events:none}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));width:min(900px,90vw);margin:-40px auto 0;position:relative;z-index:3;background:var(--surface);border:1px solid var(--line);border-radius:6px 6px 40px 6px;box-shadow:0 14px 30px rgba(43,27,46,.14)}
+.facts div{padding:18px 20px;border-right:1px solid var(--line)}.facts div:last-child{border:0}
+.facts span{display:block;color:var(--muted);font-size:.88rem}.facts b{font:700 1.15rem "Gowun Batang",serif;color:var(--accent)}
+main{max-width:760px;margin:0 auto;padding:40px 5vw 80px}
+.question{text-align:center;padding:70px 5vw 20px;max-width:760px;margin:0 auto}
+.question small{color:var(--accent);font-size:1rem}
+.question blockquote{margin:12px 0 0;font:clamp(1.35rem,3.6vw,2rem)/1.5 "Gowun Batang",Georgia,serif}
+.latest{border-left:4px solid var(--petal);padding:4px 0 4px 22px;margin:0 0 44px}
+.latest p{font-family:"Gowun Batang",serif;font-size:1.15rem;line-height:1.9;margin:8px 0 16px}.latest small{color:var(--muted)}
+.list{list-style:none;margin:0;padding:0;border-left:2px solid var(--petal);margin-left:8px}
+.list li{position:relative;padding:0 0 20px 28px}
+.list li::before{content:"";position:absolute;left:-9px;top:9px;width:16px;height:16px;border-radius:50% 0 50% 0;transform:rotate(45deg);background:var(--petal)}
+.list li.lock::before{background:transparent;border:2px solid var(--line)}
+.list a{text-decoration:none;color:var(--ink)}.list a:hover h3{color:var(--accent)}
+.list small{color:var(--muted)}.list h3{font-size:1.2rem}.lock h3{color:var(--muted)}
+.reader h2{font-size:clamp(1.8rem,5vw,2.5rem);margin:8px 0 4px}
+.reader .meta{color:var(--muted);margin-bottom:34px}
+.prose p{font-family:"Gowun Batang",Georgia,serif;font-size:var(--fs,1.15rem);line-height:2;margin:0 0 1.3em;max-width:62ch}
+.prose p:first-child::first-letter,.prose .sec:first-child+p::first-letter{float:left;font-size:3.6em;line-height:.85;padding:6px 10px 0 0;color:var(--accent);font-weight:700}
+.sec{display:flex;align-items:center;gap:14px;color:var(--muted);font-size:.9rem;margin:2.4em 0 1.4em}.sec::before,.sec::after{content:"";flex:1;height:1px;background:var(--line)}.sec:first-child{margin-top:0}
+.secnav{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:-16px 0 28px;color:var(--muted)}.secnav button{background:transparent;border:1px solid var(--line);color:var(--accent);border-radius:999px;padding:3px 14px;font:inherit;cursor:pointer}
+.nav{display:flex;justify-content:space-between;gap:12px;margin-top:40px;flex-wrap:wrap}
+footer{text-align:center;color:var(--muted);padding:26px 5vw;border-top:1px solid var(--line)}
+@media(max-width:560px){.btn.wl{margin:12px 0 0}.moon{opacity:.45}.facts div{border-right:0;border-bottom:1px solid var(--line)}}
+</style>
+</head>
+<body>
+<div id="prog"></div>
+<header class="bar">
+  <a class="brand" href="#/">Spring Letters</a>
+  <div class="tools">
+    <button id="sm" type="button" aria-label="Smaller text">A−</button>
+    <button id="lg" type="button" aria-label="Larger text">A+</button>
+    <button id="tg" type="button" aria-label="Switch light or dark">◐</button>
+  </div>
+</header>
+<div id="app"></div>
+<footer>A new episode every Saturday.</footer>
+
+<script>
+/* To publish an episode: fill in its body (list of paragraphs). It unlocks automatically on its date. */
+var CH=[
+{n:1,title:"The First Page",date:"2026-10-17",body:`The first thing I remembered about home was the rain.
+Not the houses, though they had grown smaller in my memory. Not the sea, though I could hear it long before the train reached the station. Not even the smell of salt and wet earth that used to cling to my school uniform whenever I came home late.
+It was the rain.
+It fell against the train window in thin, trembling lines, blurring the town into something that looked almost familiar.
+Five years.
+Five years since I had promised myself I would never come back unless I had a good reason.
+Death, apparently, counted as one.
+I rested my forehead against the cold glass and watched the station appear through the rain.
+The blue sign still had a missing letter. The tea stall still occupied the corner near the entrance. A man in a faded green shirt was arguing with an auto-rickshaw driver as though the fate of the country depended on the price of a ten-minute ride.
+Everything had stayed.
+Everything except me.
+My phone vibrated inside my coat pocket.
+Naina: Are you there yet?
+I typed a reply.
+Me: Just arrived.
+Three dots appeared almost immediately.
+Naina: Don't do anything dramatic.
+I frowned.
+Me: I'm literally standing on a platform.
+Naina: You once cried because a book had a sad ending and then refused to speak to me for an entire afternoon. You are capable of drama anywhere.
+Despite myself, I smiled.
+Me: That book deserved it.
+Naina: Mira.
+I stared at her message.
+There were people who knew how to say your name in a way that made it sound like a question. Naina had perfected the art years ago.
+Naina: You don't have to be okay just because you're back.
+For a moment, I forgot how to answer.
+Then the train gave a long, impatient whistle, and the moment passed.
+Me: I know.
+I put the phone away before she could reply.
+Outside, the rain grew heavier.
+I stepped onto the platform with one suitcase, a handbag, and the strange sensation that I had accidentally entered a memory belonging to someone else.
+Someone younger.
+Someone who still believed that leaving a place was the same thing as leaving the things that had happened there.
+§2
+Grandmother's house stood at the end of a narrow lane lined with hibiscus bushes and old compound walls.
+The gate made the same terrible sound when I pushed it open.
+A long, rusty squeal.
+I remembered complaining about it when I was twelve. Grandmother had promised to oil the hinges every Sunday. She had forgotten every Sunday for the next twelve years.
+I had forgotten how much I loved that sound.
+The house smelled of sandalwood, dust, and the faint sweetness of the jasmine that climbed the veranda pillars. The windows were closed. The curtains had faded. Someone had covered the furniture with white sheets, and the entire living room looked as though the house were holding its breath.
+I left my suitcase near the door.
+"Hello, Ammamma," I said.
+My voice sounded ridiculous in the empty room.
+I waited anyway.
+Some foolish part of me expected an answer from the kitchen.
+A question about whether I'd eaten. A complaint about the rain. A reminder to take off my wet shoes before I ruined the floor.
+Instead, a drop of water fell from my hair onto the wooden floorboards.
+I wiped it away with my sleeve.
+Then I stood there for another minute, looking at the empty chair beside the window.
+Grandmother had died eleven days ago.
+I had missed the funeral by six hours.
+My flight had been delayed. The roads had flooded. The explanations were perfectly reasonable, which somehow made them worse.
+I had arrived in time to see her photograph on the table, framed in the same gold border she had hated for years.
+She had always said she wanted to be remembered laughing, not looking like she was about to receive an award for surviving a particularly difficult marriage.
+In the photograph, she was laughing.
+I was glad someone had listened.
+On the table beside it lay a small brass key and a folded piece of paper.
+My name was written on the outside.
+Mira.
+I recognized the handwriting immediately.
+I sat down before opening it.
+My darling girl,
+If you are reading this, I have either finally managed to organize my cupboards or you have come home too late for me to complain about how long it took.
+I hope it is the first.
+There are things in this house that belong to you. Some are useful. Some are nonsense. Some will make you wonder why I kept them.
+Keep what you love. Give away what you don't.
+And please, for once in your life, stop keeping things just because they remind you of someone.
+Love,
+Ammamma.
+I read it twice.
+Then a third time.
+"That's a very inconvenient request," I whispered.
+Because the truth was, I had become very good at keeping things.
+A ticket from a film I'd watched with my best friend. A receipt from a café that no longer existed. A photograph with one corner torn off.
+And somewhere in the bottom of my suitcase, inside a book I had not opened in years, was the last letter I had ever written to Adrian Joseph.
+I had brought it with me without meaning to.
+Or perhaps I had meant to all along.
+I folded Grandmother's note carefully and slipped it into my pocket.
+The brass key was old, its teeth darkened with age.
+A small paper tag hung from its ring.
+ATTIC.
+I looked toward the staircase.
+For the first time since entering the house, I felt something other than sadness.
+Curiosity.
+It was a small thing, but I was grateful for it.
+§3
+By four in the afternoon, I had unpacked exactly one item.
+A toothbrush.
+The rest of my suitcase lay open on the bed, surrounded by clothes I had no intention of wearing and books I had no intention of reading.
+I had also discovered that grief made people hungry at strange times.
+I had eaten two biscuits, half a packet of crackers, and one spoonful of peanut butter directly from the jar.
+I considered this dinner.
+Then I remembered the small café near the beach.
+The one with the green awning and the terrible coffee.
+The one where Adrian used to steal the cinnamon from the counter and sprinkle it over my hot chocolate because he claimed it improved the taste.
+I had not thought about that in years.
+That was the lie I told myself, anyway.
+I changed into a dry sweater, tied my hair into a loose knot, and took an umbrella from the stand near the door.
+The town greeted me with wet roads, tangled telephone wires, and the smell of fried bananas drifting from a shop near the junction.
+An old woman selling flowers recognized me.
+"Mira mole?"
+I stopped.
+She had a basket of jasmine in front of her and silver hair twisted into a bun.
+"Yes," I said, surprised she remembered me.
+"Elizabeth's granddaughter."
+I nodded.
+Her expression softened.
+"She spoke about you every day."
+I looked down at the wet pavement.
+"I know."
+The woman reached into her basket and pulled out a small string of jasmine.
+"Take this."
+"Oh, no, that's okay—"
+"Take it, mole."
+I accepted it.
+The flowers were cool against my palm.
+"She was very proud of you," the woman said.
+I thanked her and walked away before she could say anything else.
+I had spent five years building a life that made sense on paper. I had a job, a rented apartment, a calendar full of appointments, and enough savings to convince myself I was becoming a responsible adult.
+I was good at leaving places.
+I was less good at hearing what people had to say about the places I left behind.
+The café appeared at the end of the road.
+The green awning had been replaced with a newer one. The windows were cleaner. Someone had painted the door a shade of blue that looked almost indecently cheerful in the rain.
+I stopped outside.
+Through the glass, I could see two students sharing a plate of fries, a man reading the newspaper, and a woman talking animatedly into her phone.
+Normal people.
+Normal afternoons.
+I took a breath and opened the door.
+A bell rang overhead.
+And then I saw him.
+Adrian stood behind the counter, holding a white ceramic cup in one hand and a small towel in the other.
+For a second, my mind refused to understand what my eyes were telling it.
+He was older.
+Of course he was older.
+His hair was shorter than I remembered, his shoulders broader, and there was a faint scar near his left eyebrow that I didn't recognize.
+But he still had the same habit of pressing his lips together when he was concentrating.
+He was doing it now.
+Looking down at the cup.
+Then he looked up.
+The towel slipped slightly in his hand.
+Neither of us spoke.
+The bell above the door stopped moving.
+I became painfully aware of the water dripping from my umbrella, the wet hem of my jeans, and the fact that I had spent an unreasonable amount of time imagining what I might say if I ever saw him again.
+In every version, I was calm.
+In every version, I had something clever to say.
+In every version, I was not standing in a café with an umbrella dripping onto my shoes, looking as though I had forgotten the English language.
+"Mira?"
+He said my name quietly.
+Not like a question.
+Like something he had been keeping safe.
+"Hi," I managed.
+His eyes moved over my face, searching for something. I wondered what he could possibly be looking for.
+The seventeen-year-old girl who had left?
+The twenty-year-old who had waited for a reply?
+Or the woman standing in front of him now, who had learned to answer emails in under an hour but still couldn't bring herself to delete a five-year-old message thread?
+"You came back," he said.
+"I did."
+A pause.
+"I'm sorry about your grandmother."
+Something inside my chest tightened.
+"Thank you."
+He placed the cup on the counter.
+"I wanted to come by the house. I just wasn't sure if—"
+"It's okay."
+The words came out too quickly.
+I had always been good at that.
+Ending conversations before they reached anything dangerous.
+Adrian nodded.
+"Right."
+He looked down at the counter, then back at me.
+"Do you still take coffee without sugar?"
+I stared at him.
+Of all the things he could have asked, that was the one that nearly undid me.
+Because I did.
+I still took coffee without sugar. I still read the last page of a book before deciding whether to buy it. I still hated the sound of balloons popping.
+And I still remembered the exact shade of blue of his old bicycle.
+"Yes," I said.
+He turned toward the coffee machine.
+"One coffee, no sugar."
+"I can pay."
+"I didn't say you couldn't."
+There it was.
+A tiny, familiar piece of the person I used to know.
+I almost smiled.
+Almost.
+He made the coffee without asking me anything else.
+I watched his hands as he worked. I remembered those hands holding a book open between us when we were seventeen. Remembered his fingers brushing mine when he passed me a note. Remembered how he used to tap twice on a table when he was nervous.
+He tapped twice against the counter now.
+I looked away.
+When he placed the cup in front of me, our fingers nearly touched.
+Nearly.
+"Thank you," I said.
+"You're welcome."
+I took a sip.
+It was exactly how I remembered it.
+I hated that.
+I hated that something as ordinary as coffee could make five years disappear for half a second.
+"How long are you here?" he asked.
+"Ten days."
+He went still.
+It was subtle. A brief pause, barely enough for anyone else to notice.
+But I noticed.
+"Ten days," he repeated.
+"I have to sort out the house."
+"Right."
+"And then I have to go back."
+He nodded once.
+"Of course."
+There was no accusation in his voice.
+I almost wished there had been.
+Anger would have been easier. Anger would have given us something to stand on.
+Instead, he reached for the towel and began wiping an already clean patch of counter.
+"I hope you find what you're looking for," he said.
+I wanted to ask him what he meant.
+I wanted to ask him why he had never replied to my letter, why he had allowed five years to pass without a single message, why he was looking at me like someone who had already said goodbye.
+Instead, I took another sip of coffee.
+"Thank you," I said again.
+I was beginning to hate those two words.
+I finished half the cup and left the rest on the counter.
+When I reached the door, I heard him say my name.
+I turned.
+For a moment, he looked as though he might finally say something that mattered.
+Something about the letter.
+Something about the years.
+Something about us.
+Instead, he said, "The rain's getting worse."
+I looked through the window.
+It was.
+"Take care, Adrian."
+He nodded.
+"You too, Mira."
+I stepped outside.
+The door closed behind me with a small, cheerful bell.
+I walked halfway down the street before I realized I was still holding the cup's cardboard sleeve in my hand.
+I had taken it without thinking.
+On the inside, someone had written a small message in blue ink.
+Have a good day.
+I stopped beneath the awning of a closed shop.
+The handwriting was familiar.
+Not Adrian's.
+Mine.
+I turned the sleeve over.
+There, beneath the fold, was a date.
+Five years ago.
+I remembered then.
+I had written hundreds of little messages on coffee sleeves when I worked at the café during university holidays. I had forgotten most of them.
+Apparently, Adrian hadn't.
+I stood in the rain until the ink began to blur.
+Then I went home.
+§4
+That night, I opened the suitcase properly for the first time.
+The letter was inside a paperback with a cracked spine.
+I had wrapped it in a receipt from the day I left town, as though paper could protect paper from what time did to everything else.
+The envelope had softened at the corners.
+My handwriting looked younger.
+More certain.
+On the front, I had written only his name.
+Adrian.
+I sat on the floor beside the bed.
+For a long time, I simply looked at it.
+I had imagined this moment so many times that I had stopped believing it would ever happen.
+Sometimes I imagined burning the letter.
+Sometimes I imagined sending it.
+Sometimes I imagined opening the door one morning and finding a reply on the doorstep.
+But I had never imagined sitting in my grandmother's empty house, on a rainy evening, with the person I had once loved more than anything in the world living a few streets away.
+I slid my finger beneath the envelope flap.
+Then I stopped.
+I couldn't open it.
+Not yet.
+Instead, I took a blank sheet of paper from my notebook and found a pen.
+For a few minutes, I wrote nothing.
+Then I began.
+Dear Adrian,
+I saw you today.
+I stared at the sentence.
+It was absurdly inadequate.
+Five years of silence, and that was all I could think to say.
+I crossed it out.
+Dear Adrian,
+You looked older.
+I crossed that out too.
+I put the pen down and pressed my hands over my face.
+"You're twenty-four years old," I told myself. "You have a job. You pay taxes. You can write a letter."
+The room remained unimpressed.
+I picked up the pen again.
+Dear Adrian,
+I thought that if I ever saw you again, I would know exactly what to say.
+I thought I would be angry.
+I thought I would ask you why.
+But you made me coffee, and I remembered everything except how to hate you.
+I stopped.
+Outside, the rain tapped against the window.
+I read the words once.
+Twice.
+Then, before I could change my mind, I folded the page and slipped it into the envelope with the old letter.
+I did not seal it.
+I placed it inside the book and set the book on the bedside table.
+Ten days.
+That was how long I had before I left this town again.
+Ten days to sort through a house full of memories.
+Ten days to decide what to keep.
+Ten days to see a man who had once been my whole world and pretend he was simply someone I used to know.
+I switched off the lamp.
+In the darkness, I remembered Adrian's face when he had seen me.
+Not surprise.
+Not anger.
+Something quieter.
+Something that looked terribly like relief.
+And for the first time in five years, I allowed myself to wonder whether I had been the only one waiting.`.split("\n").filter(Boolean)},
+{n:2,title:"Things We Kept",date:"2026-10-24",body:[]},
+{n:3,title:"Rain on the Petals",date:"2026-10-31",body:[]},
+{n:4,title:"A Table for Two",date:"2026-11-07",body:[]},
+{n:5,title:"Unsealed",date:"2026-11-14",body:[]},
+{n:6,title:"The Quiet Platform",date:"2026-11-21",body:[]},
+{n:7,title:"Half a Sentence",date:"2026-11-28",body:[]},
+{n:8,title:"The Last Full Bloom",date:"2026-12-05",body:[]},
+{n:9,title:"Wind",date:"2026-12-12",body:[]},
+{n:10,title:"Goodbye, Spring",date:"2026-12-19",body:[]}
+];
+var app=document.getElementById('app'),root=document.documentElement,prog=document.getElementById('prog');
+function today(){var d=new Date();return d.getFullYear()+'-'+('0'+(d.getMonth()+1)).slice(-2)+'-'+('0'+d.getDate()).slice(-2)}
+function open(c){return c.body.length>0&&c.date<=today()}
+function fmt(s){return new Date(s+'T00:00:00').toLocaleDateString('en',{month:'long',day:'numeric'})}
+function get(k){try{return localStorage.getItem(k)}catch(e){return null}}
+function set(k,v){try{localStorage.setItem(k,v)}catch(e){}}
+function list(){return '<ul class="list">'+CH.map(function(c){
+  return open(c)?'<li><a href="#/ch/'+c.n+'"><h3>Episode '+c.n+': '+c.title+'</h3><small>Day '+c.n+' of 10 · '+fmt(c.date)+'</small></a></li>'
+  :'<li class="lock"><h3>Episode '+c.n+': '+c.title+'</h3><small>Day '+c.n+' of 10 · unlocks '+fmt(c.date)+'</small></li>'}).join('')+'</ul>'}
+function home(){
+  var out=CH.filter(open),L=out[out.length-1]||CH[0],next=CH.filter(function(c){return !open(c)})[0],saved=parseInt(get('sl-last'),10);
+  var go=saved&&CH[saved-1]&&open(CH[saved-1])?saved:1;
+  app.innerHTML='<div class="banner"><div class="moon" aria-hidden="true"></div><svg class="branch" viewBox="0 0 600 340" aria-hidden="true"><path d="M610 20 C470 40 380 90 290 150 S120 250 20 300" fill="none" stroke="#1a0e18" stroke-width="9" stroke-linecap="round"/><g fill="#f7b4c4"><circle cx="500" cy="45" r="16"/><circle cx="450" cy="75" r="20"/><circle cx="395" cy="105" r="15"/><circle cx="350" cy="170" r="21"/><circle cx="295" cy="140" r="17"/><circle cx="240" cy="60" r="19"/><circle cx="205" cy="212" r="18"/><circle cx="115" cy="150" r="20"/></g></svg><div id="petals" aria-hidden="true"></div><div class="txt"><span class="badge">Episode '+L.n+' is live</span><h1>Spring Letters</h1><p class="tagline">A love story about timing, silence, and the courage to say goodbye.</p><a class="btn" href="#/ch/'+go+'">'+(saved?'Continue reading':'Start reading')+'</a><a class="btn wl" href="#/" onclick="seeCh();return false">All episodes</a></div></div>'+
+  '<div class="facts"><div><span>Genre</span><b>Contemporary romance</b></div><div><span>Format</span><b>10 weekly episodes</b></div><div><span>Timeline</span><b>10 consecutive days</b></div><div><span>Tone</span><b>Tender, nostalgic, bittersweet</b></div></div>'+
+  '<div class="question"><small>The central question</small><blockquote>If two people still love each other, but the lives they have built no longer fit together, is love a reason to stay, or a reason to let go?</blockquote></div>'+
+  '<main><div class="latest"><small>Latest episode</small><h3>Episode '+L.n+': '+L.title+'</h3><p>'+L.body[0].slice(0,190)+'…</p><a class="btn" href="#/ch/'+L.n+'">Read it now</a></div><h2 id="chs">Episodes</h2><p style="color:var(--muted);margin:2px 0 22px">'+(next?'Next up: Episode '+next.n+' on '+fmt(next.date)+'.':'You are all caught up.')+'</p>'+list()+'</main>';
+  petals();
+}
+function chapter(n){
+  var c=CH[n-1];
+  if(!c||!open(c)){location.hash='#/';return}
+  set('sl-last',n);
+  var p=CH[n-2],q=CH[n];
+  app.innerHTML='<main class="reader"><a href="#/">All episodes</a><h2>Episode '+c.n+': '+c.title+'</h2><div class="meta">Day '+c.n+' of 10 · '+fmt(c.date)+'</div>'+secnav(c)+'<div class="prose">'+prose(c)+'</div>'+
+  '<div class="nav"><a class="btn ghost" href="#/ch/'+(n-1)+'" '+(p?'':'aria-disabled="true"')+'>Previous</a>'+
+  (q&&open(q)?'<a class="btn" href="#/ch/'+(n+1)+'">Next episode</a>':'<span class="btn ghost" aria-disabled="true">'+(q?'Next unlocks '+fmt(q.date):'The end')+'</span>')+'</div></main>';
+  window.scrollTo(0,0);
+}
+function secs(c){return c.body.filter(function(t){return t.charAt(0)==='§'}).map(function(t){return t.slice(1)})}
+function prose(c){var h='',has=secs(c).length>0;if(has)h='<div class="sec" id="s1">Section 1</div>';
+  c.body.forEach(function(t){h+=t.charAt(0)==='§'?'<div class="sec" id="s'+t.slice(1)+'" role="separator">Section '+t.slice(1)+'</div>':'<p>'+t+'</p>'});return h}
+function secnav(c){var a=secs(c);if(!a.length)return '';return '<div class="secnav">Jump to <button type="button" onclick="jumpS(1)">1</button>'+a.map(function(k){return '<button type="button" onclick="jumpS('+k+')">'+k+'</button>'}).join('')+'</div>'}
+function jumpS(k){var e=document.getElementById('s'+k);if(e)e.scrollIntoView({behavior:'smooth'})}
+function seeCh(){var e=document.getElementById('chs');if(e)e.scrollIntoView({behavior:'smooth'})}
+function petals(){
+  var b=document.getElementById('petals');if(!b)return;
+  for(var i=0;i<24;i++){var e=document.createElement('i');e.className='petal';var s=.7+Math.random()*.9;
+    e.style.cssText='left:'+Math.random()*100+'%;--y:'+Math.random()*80+';width:'+13*s+'px;height:'+10*s+'px;animation-duration:'+(8+Math.random()*8)+'s;animation-delay:-'+Math.random()*14+'s;opacity:'+(.5+Math.random()*.4);b.appendChild(e)}
+}
+function route(){var m=location.hash.match(/^#\/ch\/(\d+)/);m?chapter(parseInt(m[1],10)):home()}
+addEventListener('hashchange',route);route();
+addEventListener('scroll',function(){var h=document.documentElement;prog.style.width=(h.scrollTop/Math.max(1,h.scrollHeight-h.clientHeight)*100)+'%'});
+var fs=parseFloat(get('sl-fs'))||1.15;function size(){root.style.setProperty('--fs',fs+'rem');set('sl-fs',fs)}size();
+document.getElementById('sm').onclick=function(){fs=Math.max(.95,fs-.1);size()};
+document.getElementById('lg').onclick=function(){fs=Math.min(1.75,fs+.1);size()};
+document.getElementById('tg').onclick=function(){var d=root.dataset.theme?root.dataset.theme==='dark':matchMedia('(prefers-color-scheme:dark)').matches;root.dataset.theme=d?'light':'dark'};
+</script>
+</body>
+</html>
